@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 /**
- * A class to help us find safe locations for Alex
+ * A class to help us find safe locations for Ada
  */
 class SafeSpaces {
 
@@ -20,28 +20,28 @@ class SafeSpaces {
 
     /**
      * This method should take a two-dimensional, zero-based representation of coordinates for the agents locations and
-     * find the safest places for Alex in a two-dimensional, zero-based representation of coordinates
+     * find the safest places for Ada in a two-dimensional, zero-based representation of coordinates
      *
      * @see SafeSpaces#convertCoordinates(String[]) for the two-dimensional, zero-based representation of coordinates
      * @param agentCoordinates a two-dimensional, zero-based representation of coordinates for the agents locations
-     * @return a two-dimensional, zero-based representation of coordinates for the safest places for alex
+     * @return a two-dimensional, zero-based representation of coordinates for the safest places for ada
      */
     int[][] findSafeSpaces(int[][] agentCoordinates){
         return null;
     }
 
     /**
-     * This method should take an array of alphanumeric agent locations and offer advice to Alex for where she
+     * This method should take an array of alphanumeric agent locations and offer advice to Ada for where she
      * should hide out in the city, with special advice for edge cases
      * @param alphanumericCoordinates (e.g. ["A5", "B1"])
-     * @return SearchResult with the proper information for Alex
+     * @return SearchResult with the proper information for Ada
      */
-    SearchResult adviceForAlex(String[] alphanumericCoordinates){
+    SearchResult adviceForAda(String[] alphanumericCoordinates){
         return null;
     }
 
     /**
-     * Class that contains advice for Alex
+     * Class that contains advice for Ada
      * In general the safeLocations array should be filled
      * However there edgecases to be taken into account (e.g. no safe locations or only safe locations) which would
      * only require a message

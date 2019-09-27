@@ -57,8 +57,8 @@ class SafetyFinderTest(unittest.TestCase):
     # Level 3 -- Handling edge cases and offering recommendations
     def test_no_agents(self):
         """Tests for no agents in the city"""
-        self.assertEqual(SafetyFinder().advice_for_alex([]),
-                         'The whole city is safe for Alex! :-)')
+        self.assertEqual(SafetyFinder().advice_for_ada([]),
+                         'The whole city is safe for Ada! :-)')
 
     def test_agents_everywhere(self):
         """Tests for agents everywhere in the city. Oh no!!"""
@@ -72,39 +72,39 @@ class SafetyFinderTest(unittest.TestCase):
                   'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10',
                   'I1', 'I2', 'I3', 'I4', 'I5', 'I6', 'I7', 'I8', 'I9', 'I10',
                   'J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10']
-        self.assertEqual(SafetyFinder().advice_for_alex(agents),
-                         'There are no safe locations for Alex! :-(')
+        self.assertEqual(SafetyFinder().advice_for_ada(agents),
+                         'There are no safe locations for Ada! :-(')
 
     def test_advice_round1(self):
         """Test for six agents at specified locations"""
         agents = ['B2', 'D6', 'E9', 'H4', 'H9', 'J2']
-        self.assertEqual(sorted(SafetyFinder().advice_for_alex(agents)),
+        self.assertEqual(sorted(SafetyFinder().advice_for_ada(agents)),
                          sorted(['A10', 'A8', 'F1']))
 
     def test_advice_round2(self):
         """Test for seven agents at specified locations"""
         agents = ['B4', 'C4', 'C8', 'E2', 'F10', 'H1', 'J6']
-        self.assertEqual(sorted(SafetyFinder().advice_for_alex(agents)),
+        self.assertEqual(sorted(SafetyFinder().advice_for_ada(agents)),
                          sorted(['A1', 'A10', 'E6', 'F5', 'F6', 'G4', 'G5',
                                  'G7', 'H8', 'I9', 'J10']))
 
     def test_advice_round3(self):
         """Test for a different six agents at specified locations"""
         agents = ['A1', 'A10', 'B6', 'F2', 'J1', 'J10']
-        self.assertEqual(sorted(SafetyFinder().advice_for_alex(agents)),
+        self.assertEqual(sorted(SafetyFinder().advice_for_ada(agents)),
                          sorted(['F8', 'G7', 'H6']))
 
     def test_advice_round4(self):
         """Test when only a single agent remains in the city"""
         agents = ['A1']
-        self.assertEqual(sorted(SafetyFinder().advice_for_alex(agents)),
+        self.assertEqual(sorted(SafetyFinder().advice_for_ada(agents)),
                          sorted(['J10']))
 
     def test_agent_outside_map(self):
         """Test when only a single agent remains in the city"""
         agents = ['A12']
-        self.assertEqual(SafetyFinder().advice_for_alex(agents),
-                         'The whole city is safe for Alex! :-)')
+        self.assertEqual(SafetyFinder().advice_for_ada(agents),
+                         'The whole city is safe for Ada! :-)')
 
 
 if __name__ == '__main__':

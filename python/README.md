@@ -47,9 +47,9 @@ This will also install numpy and scipy for your convenience. However, you are no
 
 ### Creating the solution
 
-You should see the file `safe_spaces.py`, which contains a class definition for a class named `SafetyFinder`. This class contains three methods: `convert_coordinates`, `find_safe_spaces`, and `advice_for_alex`.
+You should see the file `safe_spaces.py`, which contains a class definition for a class named `SafetyFinder`. This class contains three methods: `convert_coordinates`, `find_safe_spaces`, and `advice_for_ada`.
 
-There are three levels to the challenge. In the first level you are asked to convert alphanumeric map coordinates (e.g. 'A3') to a more easily handled form. In the next level, you are asked to find the "safe spaces" in the map. Finally, in the last level, you are asked to provide feedback to Alex and to handle any edge cases.
+There are three levels to the challenge. In the first level you are asked to convert alphanumeric map coordinates (e.g. 'A3') to a more easily handled form. In the next level, you are asked to find the "safe spaces" in the map. Finally, in the last level, you are asked to provide feedback to Ada and to handle any edge cases.
 
 For each method, we are expecting `agents` to be a list of coordinates, e.g.
 

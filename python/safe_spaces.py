@@ -2,7 +2,7 @@
 
 class SafetyFinder:
     """A class that contains everything we need to find the
-    safest places in the city for Alex to hide out
+    safest places in the city for Ada to hide out
     """
 
     def convert_coordinates(self, agents):
@@ -19,7 +19,7 @@ class SafetyFinder:
 
     def find_safe_spaces(self, agents):
         """This method will take an array with agent locations and find
-        the safest places in the city for Alex to hang out.
+        the safest places in the city for Ada to hang out.
 
         Arguments:
         agents -- a list-like object containing the map coordinates of agents.
@@ -30,16 +30,16 @@ class SafetyFinder:
         """
         pass
 
-    def advice_for_alex(self, agents):
+    def advice_for_ada(self, agents):
         """This method will take an array with agent locations and offer advice
-        to Alex for where she should hide out in the city, with special advice for
+        to Ada for where she should hide out in the city, with special advice for
         edge cases.
 
         Arguments:
         agents -- a list-like object containing the map coordinates of the agents.
             Each entry should be formatted in alphanumeric form, e.g. A10, E6, etc.
 
-        Returns either a list of alphanumeric map coordinates for Alex to hide in,
+        Returns either a list of alphanumeric map coordinates for Ada to hide in,
         or a specialized message informing her of edge cases
         """
         pass

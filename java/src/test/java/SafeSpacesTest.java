@@ -140,8 +140,8 @@ public class SafeSpacesTest {
                 "H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10",
                 "I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8", "I9", "I10",
                 "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10"};
-        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAlex(agents);
-        assertEquals("There are no safe locations for Alex! :-(",
+        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAda(agents);
+        assertEquals("There are no safe locations for Ada! :-(",
                 searchResult.toString());
     }
 
@@ -152,7 +152,7 @@ public class SafeSpacesTest {
     @Ignore
     public void testAdviceRound1(){
         String[] agents = {"B2", "D6", "E9", "H4", "H9", "J2"};
-        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAlex(agents);
+        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAda(agents);
         assertEquals(Arrays.toString(new String[]{"A10", "A8", "F1"}),
                 searchResult.toString());
     }
@@ -164,7 +164,7 @@ public class SafeSpacesTest {
     @Ignore
     public void testAdviceRound2(){
         String[] agents = {"B4", "C4", "C8", "E2", "F10", "H1", "J6"};
-        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAlex(agents);
+        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAda(agents);
         assertEquals(Arrays.toString(new String[]{"A1", "A10", "E6", "F5", "F6", "G4", "G5","G7", "H8", "I9", "J10"}),
                 searchResult.toString());
     }
@@ -176,7 +176,7 @@ public class SafeSpacesTest {
     @Ignore
     public void testAdviceRound3(){
         String[] agents = {"A1", "A10", "B6", "F2", "J1", "J10"};
-        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAlex(agents);
+        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAda(agents);
         assertEquals(Arrays.toString(new String[]{"F8", "G7", "H6"}),
                 searchResult.toString());
     }
@@ -188,7 +188,7 @@ public class SafeSpacesTest {
     @Ignore
     public void testAdviceRound4(){
         String[] agents = {"A1"};
-        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAlex(agents);
+        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAda(agents);
         assertEquals(Arrays.toString(new String[]{"J10"}),
                 searchResult.toString());
     }
@@ -200,8 +200,8 @@ public class SafeSpacesTest {
     @Ignore
     public void testAgentOutsideMap(){
         String[] agents = {"A12"};
-        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAlex(agents);
-        assertEquals("The whole city is safe for Alex! :-)",
+        SafeSpaces.SearchResult searchResult = objectUnderTest.adviceForAda(agents);
+        assertEquals("The whole city is safe for Ada! :-)",
                 searchResult.toString());
     }
 

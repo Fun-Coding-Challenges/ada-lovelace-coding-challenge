@@ -7,7 +7,7 @@ end
 def find_safe_spaces(agents)
 end
 
-def advice_for_alex(agents)
+def advice_for_ada(agents)
 end
 
 # Please enable Level 1, 2, 3-Tests by replacing xdescribe with describe!
@@ -55,10 +55,10 @@ RSpec.xdescribe 'Spy Places Level 2 - find save places' do
   end
 end
 
-RSpec.xdescribe 'Spy Places Level 3 - find edge cases and give advice to Alex' do
+RSpec.xdescribe 'Spy Places Level 3 - find edge cases and give advice to Ada' do
   it 'expects all save places at no agents' do
     agents = []
-    expect(advice_for_alex(agents)).to eq('The whole city is safe for Alex! :-)')
+    expect(advice_for_ada(agents)).to eq('The whole city is safe for Ada! :-)')
   end
 
   it 'no place is save if agents are everywhere' do
@@ -73,32 +73,32 @@ RSpec.xdescribe 'Spy Places Level 3 - find edge cases and give advice to Alex' d
          'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10',
          'I1', 'I2', 'I3', 'I4', 'I5', 'I6', 'I7', 'I8', 'I9', 'I10',
          'J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10']
-    expect(advice_for_alex(agents)).to eq('There are no safe locations for Alex! :-(')
+    expect(advice_for_ada(agents)).to eq('There are no safe locations for Ada! :-(')
   end
 
   it 'some places are save if agents are some' do
     agents =
         ['B2', 'D6', 'E9', 'H4', 'H9', 'J2']
-    expect(advice_for_alex(agents)).to match_array(['A10', 'A8', 'F1'])
+    expect(advice_for_ada(agents)).to match_array(['A10', 'A8', 'F1'])
   end
   it 'some places are save if agents are some' do
     agents =
         ['B4', 'C4', 'C8', 'E2', 'F10', 'H1', 'J6']
-    expect(advice_for_alex(agents)).to match_array(['A1', 'A10', 'E6', 'F5', 'F6', 'G4', 'G5', 'G7', 'H8', 'I9', 'J10'])
+    expect(advice_for_ada(agents)).to match_array(['A1', 'A10', 'E6', 'F5', 'F6', 'G4', 'G5', 'G7', 'H8', 'I9', 'J10'])
   end
   it 'some places are save if agents are some' do
     agents =
         ['A1', 'A10', 'B6', 'F2', 'J1', 'J10']
-    expect(advice_for_alex(agents)).to match_array(['F8', 'G7', 'H6'])
+    expect(advice_for_ada(agents)).to match_array(['F8', 'G7', 'H6'])
   end
   it 'one save place' do
     agents =
         ['A1']
-    expect(advice_for_alex(agents)).to match_array(['J10'])
+    expect(advice_for_ada(agents)).to match_array(['J10'])
   end
   it 'agent outside the city' do
     agents =
         ['A12']
-    expect(advice_for_alex(agents)).to eq('The whole city is safe for Alex! :-)')
+    expect(advice_for_ada(agents)).to eq('The whole city is safe for Ada! :-)')
   end
 end

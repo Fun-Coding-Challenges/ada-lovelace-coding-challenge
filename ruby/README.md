@@ -14,7 +14,7 @@ To run the test, type in: `bundle exec rspec run.rb`
 
 ### Creating the solution
 
-All things are located in the file run.rb. There you will find three defintions of functions: convert_coordinates(agents), find_safe_spaces(agents) and advice_for_alex(agents).
+All things are located in the file run.rb. There you will find three defintions of functions: convert_coordinates(agents), find_safe_spaces(agents) and advice_for_ada(agents).
 
 For each function exists a suite of rspec-tests with example input and exprected results from the function. You can find all the requirements of the challenge in this tests.
 

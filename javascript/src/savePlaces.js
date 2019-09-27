@@ -7,12 +7,12 @@ const findSafePlaces = (agents) => {
   return "findSafePlaces"
 }
 
-const adviceForAlex = (agents) => {
-  return "adviceForAlex"
+const adviceForAda = (agents) => {
+  return "adviceForAda"
 }
 
 module.exports = {
   convertCoordinates,
   findSafePlaces,
-  adviceForAlex
+  adviceForAda
 }
