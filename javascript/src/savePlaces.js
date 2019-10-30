@@ -13,7 +13,7 @@ const convertCoordinates = (agents) => {
 }
 
 const findSafePlaces = (agents) => {
-  let places = [], savePlaces = [], maxDistance = 0;
+  let places = [], savePlaces = [], maxDistance = 1;
   for (i = 0; i < 10; i++) {
     for (j = 0; j < 10; j++) {
       places.push([i, j]);
@@ -37,7 +37,18 @@ const findSafePlaces = (agents) => {
 }
 
 const adviceForAda = (agents) => {
-  return "adviceForAda"
+  const agentCoordinates = convertCoordinates(agents);
+  
+  const validAgents = validateAgents(agentCoordinates);
+  if (validAgents.length === 0) {
+    return 'The whole city is safe for Ada! :-)';
+  }
+
+  const savePlaces = findSafePlaces(validAgents);
+  if (savePlaces.length === 0) {
+    return 'There are no safe locations for Ada! :-('
+  }
+  return savePlaces.map(coordinatesToString);
 }
 
 module.exports = {
@@ -53,6 +64,16 @@ const letterPosition = [
 
 function letterToNumber(letter) {
   return letterPosition.findIndex((position) => letter === position);
+}
+
+function coordinatesToString([x, y]) {
+  return letterPosition[x] + (y + 1);
+}
+
+function validateAgents(agents) {
+  return agents.filter(([x, y]) => {
+    return 0 <= x && x <= 9 && 0 <= y && y <= 9;
+  });
 }
 
 function getSmalestDistance(place, agents) {
