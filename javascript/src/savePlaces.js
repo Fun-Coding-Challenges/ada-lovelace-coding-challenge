@@ -1,14 +1,14 @@
 // This is where you implement your solution 
 const convertCoordinates = (agents) => {
-  if ( !agents || agents.length === 0) {
+  if ( agents.length === 0) {
     return [];
   }
 
   return agents.map((alphaNumber) => {
-    coordinates = [];
-    coordinates[0] = letterToNumber(alphaNumber.slice(0,1));
-    coordinates[1] = parseInt(alphaNumber.slice(1)) - 1;
-    return coordinates;
+    return [
+      letterToNumber(alphaNumber.slice(0,1)),
+      parseInt(alphaNumber.slice(1)) - 1
+    ];
   });
 }
 
@@ -28,7 +28,7 @@ const findSafePlaces = (agents) => {
       savePlaces.push(place);
 
       maxDistance = min;
-    } else if (maxDistance == min) {
+    } else if (maxDistance === min) {
       savePlaces.push(place);
     }
   });
@@ -38,7 +38,7 @@ const findSafePlaces = (agents) => {
 
 const adviceForAda = (agents) => {
   const agentCoordinates = convertCoordinates(agents);
-  
+
   const validAgents = validateAgents(agentCoordinates);
   if (validAgents.length === 0) {
     return 'The whole city is safe for Ada! :-)';
@@ -72,7 +72,8 @@ function coordinatesToString([x, y]) {
 
 function validateAgents(agents) {
   return agents.filter(([x, y]) => {
-    return 0 <= x && x <= 9 && 0 <= y && y <= 9;
+    return 0 <= x && x <= 9 &&
+           0 <= y && y <= 9;
   });
 }
 
