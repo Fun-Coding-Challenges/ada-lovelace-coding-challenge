@@ -3,7 +3,7 @@ import unittest
 
 from safe_spaces import SafetyFinder
 
-@unittest.skip("Comment or delete this line to solve the challenge with python")
+
 class SafetyFinderTest(unittest.TestCase):
     """A class that contains the unit tests that adhere to the game spec"""
 
@@ -41,6 +41,8 @@ class SafetyFinderTest(unittest.TestCase):
         agents = [[1, 1], [3, 5], [4, 8], [7, 3], [7, 8], [9, 1]]
         self.assertEqual(sorted(SafetyFinder().find_safe_spaces(agents)),
                          sorted([[0, 9], [0, 7], [5, 0]]))
+
+
 
     def test_safe_spaces_round2(self):
         """Test for six agents at different specified locations"""
