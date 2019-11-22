@@ -42,8 +42,6 @@ class SafetyFinderTest(unittest.TestCase):
         self.assertEqual(sorted(SafetyFinder().find_safe_spaces(agents)),
                          sorted([[0, 9], [0, 7], [5, 0]]))
 
-
-
     def test_safe_spaces_round2(self):
         """Test for six agents at different specified locations"""
         agents = [[0, 0], [0, 9], [1, 5], [5, 1], [9, 0], [9, 9]]

@@ -21,8 +21,10 @@ class SafetyFinder:
         def convert_coordinate(coordinate):
             letter, digit = coordinate[0], coordinate[1:]
             return [ord(letter) - 65, int(digit) - 1]
-
         return [convert_coordinate(coordinate) for coordinate in agents]
+
+    def convert_coordinates_inverse(self, agents):
+        return [chr(x + 65) + str(y + 1) for x, y in agents]
 
     def find_safe_spaces(self, agents):
         """This method will take an array with agent locations and find
@@ -36,24 +38,27 @@ class SafetyFinder:
         Returns a list of safe spaces in indexed vector form.
         """
         l = 10
-        field = np.full((l, l), l)
+        max_distance = 2 * l
+        field = np.full((l, l), max_distance)
         for x, y in agents:
-            field[y, x] = 1
-        for i in range(1, l + 1):
+            if x < l and y < l:
+                field[x, y] = 1
+        if (field == np.ones_like(field)).all():
+            return []
+        for i in range(1, max_distance):
             for y in range(l):
                 for x in range(l):
-                    val = field[y][x]
+                    val = field[x][y]
                     if val == i:
                         if x > 0:
-                            field[y][x - 1] = min(field[y][x - 1], val + 1)
+                            field[x - 1][y] = min(field[x - 1][y], val + 1)
                         if x < l - 1:
-                            field[y][x + 1] = min(field[y][x + 1], val + 1)
+                            field[x + 1][y] = min(field[x + 1][y], val + 1)
                         if y > 0:
-                            field[y - 1][x] = min(field[y - 1][x], val + 1)
+                            field[x][y - 1] = min(field[x][y - 1], val + 1)
                         if y < l - 1:
-                            field[y + 1][x] = min(field[y + 1][x], val + 1)
-        print(field)
-        print(np.where(field == field.max()))
+                            field[x][y + 1] = min(field[x][y + 1], val + 1)
+        return np.argwhere(field == field.max()).tolist()
 
     def advice_for_ada(self, agents):
         """This method will take an array with agent locations and offer advice
@@ -67,4 +72,10 @@ class SafetyFinder:
         Returns either a list of alphanumeric map coordinates for Ada to hide in,
         or a specialized message informing her of edge cases
         """
-        pass
+        numeric_agents = self.convert_coordinates(agents)
+        save_spaces = self.find_safe_spaces(numeric_agents)
+        if save_spaces:
+            if len(save_spaces) == 10 * 10:
+                return 'The whole city is safe for Ada! :-)'
+            return self.convert_coordinates_inverse(save_spaces)
+        return 'There are no safe locations for Ada! :-('
