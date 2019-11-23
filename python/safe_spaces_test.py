@@ -96,9 +96,9 @@ class SafetyFinderTest(unittest.TestCase):
 
     def test_advice_round4(self):
         """Test when only a single agent remains in the city"""
-        agents = ['A1']
-        self.assertEqual(sorted(SafetyFinder().advice_for_ada(agents)),
-                         sorted(['J10']))
+        agents = ['B2']
+        self.assertEqual(sorted(SafetyFinder().advice_for_ada(agents, l=2)),
+                         sorted(['A1']))
 
     def test_agent_outside_map(self):
         """Test when only a single agent remains in the city"""

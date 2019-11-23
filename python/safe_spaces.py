@@ -27,7 +27,24 @@ class SafetyFinder:
     def convert_coordinates_inverse(self, agents):
         return [chr(x + 65) + str(y + 1) for x, y in agents]
 
-    def find_safe_spaces(self, agents, l=10):
+    def propagate(self, coords, field, n, i):
+        next_coords = set()
+        for x, y in coords:
+            field[x][y] = i
+            if x > 0:
+                next_coords.add((x - 1, y))
+            if x < n - 1:
+                next_coords.add((x + 1, y))
+            if y > 0:
+                next_coords.add((x, y - 1))
+            if y < n - 1:
+                next_coords.add((x, y + 1))
+        next_coords -= {(x, y) for x, y in next_coords if field[x][y]}
+        if next_coords:
+            self.propagate(next_coords, field, n, i + 1)
+
+    def find_safe_spaces(self, agents, n=10):
+
         """This method will take an array with agent locations and find
         the safest places in the city for Ada to hang out.
 
@@ -38,26 +55,14 @@ class SafetyFinder:
 
         Returns a list of safe spaces in indexed vector form.
         """
-        max_distance = 2 * l
-        field = np.full((l, l), max_distance)
-        for x, y in agents:
-            if x < l and y < l:
-                field[x, y] = 1
-        if (field == np.ones_like(field)).all():
+
+        field = np.zeros((n, n))
+        agents = [(x, y) for x, y in agents if x < n and y < n]
+        if len(agents) == n * n:
             return []
-        for i in range(1, max_distance):
-            for y in range(l):
-                for x in range(l):
-                    val = field[x][y]
-                    if val == i:
-                        if x > 0:
-                            field[x - 1][y] = min(field[x - 1][y], val + 1)
-                        if x < l - 1:
-                            field[x + 1][y] = min(field[x + 1][y], val + 1)
-                        if y > 0:
-                            field[x][y - 1] = min(field[x][y - 1], val + 1)
-                        if y < l - 1:
-                            field[x][y + 1] = min(field[x][y + 1], val + 1)
+        for x, y in agents:
+            field[x, y] = 1
+        self.propagate(agents, field, n, 2)
         return np.argwhere(field == field.max()).tolist()
 
     def advice_for_ada(self, agents, l=10):
